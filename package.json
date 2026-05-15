@@ -1,0 +1,32 @@
+{
+  "name": "jenkins-devops-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UmairaRao/jenkins-devops-webapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/UmairaRao/jenkins-devops-webapp/issues"
+  },
+  "homepage": "https://github.com/UmairaRao/jenkins-devops-webapp#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "selenium-webdriver": "^4.44.0",
+    "supertest": "^7.2.2"
+  }
+}
