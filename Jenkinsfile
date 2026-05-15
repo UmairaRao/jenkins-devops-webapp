@@ -22,8 +22,8 @@
 
         stage('Containerized Deployment') {
             steps {
-                sh 'docker compose down || true'
-                sh 'docker compose up --build -d'
+                sh 'docker-compose down || true'
+                sh 'docker-compose up --build -d'
                 sh 'docker ps'
             }
         }
@@ -33,7 +33,7 @@
                 sh 'docker build -t $SELENIUM_IMAGE -f selenium/Dockerfile selenium'
                 sh 'docker rm -f selenium-chrome || true'
                 sh 'docker run -d --name selenium-chrome --network ${COMPOSE_PROJECT_NAME}_default selenium/standalone-chrome:latest'
-                sh 'sleep 10'
+                sh 'sleep 15'
                 sh 'docker run --rm --network ${COMPOSE_PROJECT_NAME}_default -e APP_URL=http://webapp:3000 -e SELENIUM_REMOTE_URL=http://selenium-chrome:4444/wd/hub $SELENIUM_IMAGE'
             }
         }
@@ -42,7 +42,7 @@
     post {
         always {
             sh 'docker rm -f selenium-chrome || true'
-            sh 'docker compose ps || true'
+            sh 'docker-compose ps || true'
         }
     }
 }
