@@ -1,0 +1,12 @@
+﻿{
+  "name": "jenkins-devops-selenium-tests",
+  "version": "1.0.0",
+  "description": "Containerized Selenium tests for Jenkins DevOps Web App",
+  "main": "e2e.test.js",
+  "scripts": {
+    "test": "node e2e.test.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.28.1"
+  }
+}

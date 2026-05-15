@@ -1,0 +1,31 @@
+﻿services:
+  mysql:
+    image: mysql:8.0
+    container_name: jenkins_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jenkins_app
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  webapp:
+    build: .
+    container_name: jenkins_webapp
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: jenkins_app
+    depends_on:
+      mysql:
+        condition: service_healthy
